@@ -30,6 +30,14 @@
 	margin: 10px 0 30px;
 	min-height: 400px;
 }
+
+.elgg-form {
+	fieldset.prototyper-fieldset {
+		border: none;
+		padding: 0;
+		margin: 0;
+	}
+}
 .prototyper-ui-template, .prototyper-ui-field {
 	position: relative;
 	padding: 40px 5px 5px;

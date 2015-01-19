@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .prototyper-ui-dashboard h3 {
   font-size: 15px;
   margin: 10px 0 5px;
@@ -20,6 +21,12 @@
   padding: 4px;
   margin: 10px 0 30px;
   min-height: 400px;
+}
+
+.elgg-form fieldset.prototyper-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .prototyper-ui-template, .prototyper-ui-field {
@@ -84,8 +91,8 @@
 .prototyper-ui-template-form .prototyper-ui-template-controls input {
   font-size: 12px;
   font-weight: bold;
-  -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   background: #f4f4f4;
   border-bottom: 1px dashed #dddddd;
@@ -132,7 +139,7 @@
   -moz-osx-font-smoothing: grayscale;
   padding-left: 4px;
   font-size: 10px;
-  content: "\f055";
+  content: "";
 }
 
 .elgg-icon.elgg-icon-prototyper-ui-move {
@@ -147,7 +154,7 @@
   cursor: move;
 }
 .elgg-icon.elgg-icon-prototyper-ui-move:after {
-  content: "\f047";
+  content: "";
 }
 .elgg-icon.elgg-icon-prototyper-ui-edit {
   background: none;
@@ -160,7 +167,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .elgg-icon.elgg-icon-prototyper-ui-edit:after {
-  content: "\f013";
+  content: "";
 }
 .elgg-icon.elgg-icon-prototyper-ui-clone {
   background: none;
@@ -173,7 +180,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .elgg-icon.elgg-icon-prototyper-ui-clone:after {
-  content: "\f0c5";
+  content: "";
 }
 .elgg-icon.elgg-icon-prototyper-ui-remove {
   background: none;
@@ -186,7 +193,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .elgg-icon.elgg-icon-prototyper-ui-remove:after {
-  content: "\f00d";
+  content: "";
 }
 .elgg-icon.elgg-icon-prototyper-ui-add {
   background: none;
@@ -199,7 +206,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .elgg-icon.elgg-icon-prototyper-ui-add:after {
-  content: "\f055";
+  content: "";
 }
 
 .prototyper-ui-options[data-required="hidden"] .prototyper-ui-section-required {
