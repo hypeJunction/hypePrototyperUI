@@ -11,7 +11,9 @@ elgg_push_context('prototyper-ui');
 
 $action = elgg_extract('action', $vars, '');
 $attributes = elgg_extract('attributes', $vars, array());
-$prototype = new Prototype(null, $attributes);
+$params = elgg_extract('params', $vars, array());
+
+$prototype = new Prototype(null, $attributes, $params);
 $form = $prototype->form($action);
 $fields = $form->getFields();
 
@@ -85,6 +87,13 @@ $fields = $form->getFields();
 <?php
 
 foreach ($attributes as $key => $value) {
+	echo elgg_view('input/hidden', array(
+		'name' => $key,
+		'value' => $value
+	));
+}
+
+foreach ($params as $key => $value) {
 	echo elgg_view('input/hidden', array(
 		'name' => $key,
 		'value' => $value
