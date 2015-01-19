@@ -35,22 +35,42 @@ function init() {
 	register_template('metadata', 'text');
 	register_template('metadata', 'plaintext');
 	register_template('metadata', 'longtext');
-	register_template('metadata', 'dropdown', array(
+	register_template('metadata', 'select', array(
 		'optionsvalues' => true,
 	));
 	register_template('metadata', 'checkboxes', array(
 		'multiple' => false,
 		'optionsvalues' => true,
 	));
+	register_template('metadata', 'radio', array(
+		'multiple' => false,
+		'optionsvalues' => true,
+	));
+	register_template('metadata', 'tags', array(
+		'multiple' => false,
+	));
+	register_template('metadata', 'date');
+	register_template('metadata', 'email');
+	register_template('metadata', 'url');
 
 	register_template('annotation', 'stars');
 
 	register_template('relationship', 'userpicker', array(
+		'access' => false,
+		'multiple' => false,
 		'relationship' => true,
 	));
 	register_template('relationship', 'friendspicker', array(
+		'access' => false,
+		'multiple' => false,
 		'relationship' => true,
 	));
-
-	register_template('icon', 'file');
+	register_template('category', 'category', array(
+		'access' => false,
+		'multiple' => true,
+	));
+	register_template('icon', 'file', array(
+		'access' => false,
+		'multiple' => false,
+	));
 }
