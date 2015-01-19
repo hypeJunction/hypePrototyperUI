@@ -29,6 +29,7 @@ $english = array(
 	'prototyper:ui:annotation' => 'Annotations',
 	'prototyper:ui:relationship' => 'Relationship',
 	'prototyper:ui:icon' => 'Icon',
+	'prototyper:ui:category' => 'Categories',
 
 	'prototyper:ui:attribute:title' => 'Title/Name',
 	'prototyper:ui:attribute:description' => 'Description',
@@ -38,12 +39,17 @@ $english = array(
 	'prototyper:ui:text' => 'Short Text',
 	'prototyper:ui:plaintext' => 'Text (no editor)',
 	'prototyper:ui:longtext' => 'Text (with editor)',
-	'prototyper:ui:dropdown' => 'Dropdown',
+	'prototyper:ui:select' => 'Select',
 	'prototyper:ui:checkboxes' => 'Checkboxes',
+	'prototyper:ui:radio' => 'Radio boxes',
 	'prototyper:ui:stars' => 'Star Rating',
 	'prototyper:ui:userpicker' => 'User picker',
 	'prototyper:ui:friendspicker' => 'Friend picker',
 	'prototyper:ui:file' => 'File',
+	'prototyper:ui:tags' => 'Tags',
+	'prototyper:ui:date' => 'Date Picker',
+	'prototyper:ui:email' => 'E-mail',
+	'prototyper:ui:url' => 'URL',
 
 );
 
