@@ -23,6 +23,10 @@ $english = array(
 	'prototyper:ui:options:label' => 'Label (%s)',
 	'prototyper:ui:inverse_relationship' => 'Inverse Relationship',
 	'prototyper:ui:bilateral' => 'Bilateral Relationship',
+	'prototyper:ui:flags' => 'Flags (for back end filtering)',
+	'prototyper:ui:min' => 'Minimum value',
+	'prototyper:ui:max' => 'Maximum value',
+	
 
 	'prototyper:ui:attributes' => 'Attributes',
 	'prototyper:ui:metadata' => 'Meta Fields',

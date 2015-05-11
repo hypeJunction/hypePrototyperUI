@@ -11,7 +11,7 @@ can be useful, when working with volatile entity types that will require admin/u
 modifications over time.
 
 ![alt text](https://raw.github.com/hypeJunction/hypePrototyperUI/master/screenshots/prototyper-ui.png "User Interface")
-![alt text](https://raw.github.com/hypeJunction/hypePrototyperUI/master/screenshots/prototyper-form.png "Resulging Form")
+![alt text](https://raw.github.com/hypeJunction/hypePrototyperUI/master/screenshots/prototyper-form.png "Resulting Form")
 
 
 ## How to Use
@@ -36,7 +36,10 @@ echo elgg_view_form('prototyper/edit', array(
 		'subtype' => 'book',
 		'access_id' => ACCESS_PUBLIC,
 		'container_guid' => $library_guid,
-	)
+	),
+	'params' => array(
+		'layout' => array('main', 'sidebar', 'footer'),
+	),
 ));
 
 ```
@@ -95,11 +98,12 @@ $attributes = array(
 );
 
 try {
-	$prototype = new Prototype($book, $attributes);
-	$body = $prototype->form('books/save')->viewBody();
+	$form = new Form('books/save', $attributes);
+	$form->setEntity($book);
+	$body = $form->viewBody();
 } catch (Exception $ex) {
 	echo $ex->getMessage();
-	return true;
+	return;
 }
 
 $body .= elgg_view('input/submit', array(
@@ -121,7 +125,13 @@ Now in your action file, all you need to do is use:
 
 $guid = get_input('guid');
 
-$prototype = new Prototype($guid);
-$prototype->action('books/save', true);
+$attributes = array(
+	'type' => 'object',
+	'subtype' => 'book',
+	'container_guid' => get_input('container_guid'),
+);
+
+$action = new Action('books/save', $attributes);
+$action->handle();
 
 ```

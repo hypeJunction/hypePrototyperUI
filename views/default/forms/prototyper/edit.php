@@ -3,7 +3,7 @@
 namespace hypeJunction\Prototyper\UI;
 
 use hypeJunction\Prototyper\Field;
-use hypeJunction\Prototyper\Prototype;
+use hypeJunction\Prototyper\Form;
 
 elgg_require_js('framework/prototyper_ui');
 
@@ -13,8 +13,8 @@ $action = elgg_extract('action', $vars, '');
 $attributes = elgg_extract('attributes', $vars, array());
 $params = elgg_extract('params', $vars, array());
 
-$prototype = new Prototype(null, $attributes, $params);
-$form = $prototype->form($action);
+$form = new Form($action, $attributes);
+$form->setParams($params);
 $fields = $form->getFields();
 
 ?>
@@ -40,7 +40,8 @@ $fields = $form->getFields();
 							), elgg_echo("prototyper:ui:$it"));
 
 					$shortname = "prototyper_$dt_$it";
-					$field = $form->addField($shortname, array(
+					$field = $form->addField(array(
+						'shortname' => $shortname,
 						'type' => $it,
 						'data_type' => $dt,
 					));
@@ -85,7 +86,6 @@ $fields = $form->getFields();
 	</div>
 </div>
 <?php
-
 foreach ($attributes as $key => $value) {
 	echo elgg_view('input/hidden', array(
 		'name' => $key,
@@ -94,10 +94,19 @@ foreach ($attributes as $key => $value) {
 }
 
 foreach ($params as $key => $value) {
-	echo elgg_view('input/hidden', array(
-		'name' => $key,
-		'value' => $value
-	));
+	if (is_array($value)) {
+		foreach ($value as $val) {
+			echo elgg_view('input/hidden', array(
+				'name' => "{$key}[]",
+				'value' => $val
+			));
+		}
+	} else {
+		echo elgg_view('input/hidden', array(
+			'name' => $key,
+			'value' => $value
+		));
+	}
 }
 
 elgg_pop_context();

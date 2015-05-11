@@ -54,6 +54,8 @@ class Template {
 		$field = get_input('field', array());
 		$temp = array();
 
+		$sort_priority = 10;
+		
 		foreach ($field as $uid => $options) {
 
 			$shortname = elgg_extract('shortname', $options, $uid);
@@ -77,13 +79,19 @@ class Template {
 			$hide_help = (bool) elgg_extract('hide_help', $options, false);
 			$help = ($hide_help) ? false : elgg_extract('help', $options, '');
 
+			$priority = elgg_extract('priority', $options, $sort_priority);
+			$sort_priority += 10;
+
 			$options_values = elgg_extract('options_values', $options, array());
+			unset($options['options_values']);
+			
 			$options_values_config = array();
 			for ($i = 0; $i < count($options_values['value']); $i++) {
 				$o_value = $options_values['value'][$i];
 				$o_label = $options_values['label'][$language][$i];
 				$options_values_config[$o_value] = array($language => $o_label);
 			}
+
 			$temp[$shortname] = array(
 				'type' => $input_type,
 				'data_type' => $data_type,
@@ -95,8 +103,16 @@ class Template {
 				'value' => $value,
 				'label' => $label,
 				'help' => $help,
+				'priority' => $priority,
 				'options_values' => $options_values_config,
 			);
+
+			if (in_array($input_type, array('checkboxes', 'radio'))) {
+				$temp[$shortname]['options'] = array_flip($options_values_config);
+			}
+
+			$temp[$shortname] = array_filter(array_merge($options, $temp[$shortname]));
+
 		}
 
 		$fields = array();

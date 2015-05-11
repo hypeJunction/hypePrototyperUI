@@ -13,7 +13,7 @@ if (!$field instanceof Field) {
 	return true;
 }
 
-$language = elgg_get_plugin_setting('default_language', PLUGIN_ID);
+$language = elgg_get_plugin_setting('default_language', 'hypePrototyper');
 if (!$language) {
 	$language = 'en';
 }
@@ -175,6 +175,21 @@ $input_vars = $field->getInputVars();
 							</label>
 						</div>
 						<!-- END RELATIONSHIP SECTION -->
+
+						<!-- START DEFAULT FLAGS SECTION -->
+					<div class="prototyper-ui-section-value">
+						<label><?php echo elgg_echo('prototyper:ui:flags') ?></label>
+						<div class="prototyper-ui-properties">
+							<?php
+							echo elgg_view('input/text', array(
+								'name' => 'field[__ID__][flags]',
+								'value' => elgg_extract('flags', $input_vars, ''),
+							));
+							?>
+						</div>
+					</div>
+					<!-- END LABEL SECTION -->
+
 					</div>
 				</div>
 
@@ -318,6 +333,10 @@ $input_vars = $field->getInputVars();
 					</div>
 				</div>
 				<!-- END REQUIRED SECTION -->
+				<?php
+					echo elgg_view("forms/prototyper/template/extend", $vars);
+					echo elgg_view("forms/prototyper/template/$data_type/$type", $vars);
+				?>
 			</div>
 		</div>
 </section>
