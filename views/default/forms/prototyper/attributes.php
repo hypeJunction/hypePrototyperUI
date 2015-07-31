@@ -1,12 +1,11 @@
 <?php
 
-namespace hypeJunction\Prototyper\UI;
-
 $fields = elgg_extract('fields', $vars);
+$values = array();
 
-if (is_array($fields)) {
+if (!empty($fields)) {
 	foreach ($fields as $field) {
-		if (!$field instanceof \hypeJunction\Prototyper\Field) {
+		if (!$field instanceof \hypeJunction\Prototyper\Elements\Field) {
 			continue;
 		}
 		if ($field->getDataType() == 'attribute') {

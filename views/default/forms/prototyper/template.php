@@ -1,22 +1,19 @@
 <?php
 
-namespace hypeJunction\Prototyper\UI;
-
-use hypeJunction\Prototyper\Field;
+use hypeJunction\Prototyper\Elements\Field;
 
 if (!elgg_in_context('prototyper-ui')) {
-	return true;
+	return;
 }
 
 $field = elgg_extract('field', $vars);
+$entity = elgg_extract('entity', $vars);
+
 if (!$field instanceof Field) {
 	return true;
 }
 
-$language = elgg_get_plugin_setting('default_language', 'hypePrototyper');
-if (!$language) {
-	$language = 'en';
-}
+$language = hypePrototyper()->config->get('default_language', 'en');
 
 $options = array(
 	'class' => 'prototyper-ui-template',
@@ -27,7 +24,7 @@ $options = array(
 $type = $field->getType();
 $data_type = $field->getDataType();
 
-$template = Template::getTemplate($data_type, $type);
+$template = hypePrototyper()->ui->getTemplate($data_type, $type);
 foreach ($template as $key => $val) {
 	$options["data-$key"] = $val;
 }
@@ -39,13 +36,14 @@ $shortname = $field->getShortname();
 $value_type = $field->getValueType();
 
 $required = $field->isRequired();
+$admin_only = $field->isAdminOnly();
 $show_access = $field->hasAccessInput();
 $multiple = $field->isMultiple();
 
 $label = $field->getLabel();
 $help = $field->getHelp();
 
-$input_vars = $field->getInputVars();
+$input_vars = $field->getInputVars($entity);
 ?>
 
 <section class="prototyper-ui-options" <?php echo $attrs ?>>
@@ -95,7 +93,7 @@ $input_vars = $field->getInputVars();
 						<div class="prototyper-ui-properties">
 							<select class="prototyper-ui-dit-select" name="field[__ID__][dit]">
 								<?php
-								$templates = Template::getTemplates();
+								$templates = hypePrototyper()->ui->getTemplates();
 								foreach ($templates as $template_data_type => $data_type_input_types) {
 									?>
 									<optgroup label="<?php echo $template_data_type ?>">
@@ -129,6 +127,18 @@ $input_vars = $field->getInputVars();
 						</label>
 						<!-- END REQUIRED SECTION -->
 
+							<!-- START ADMIN ONLY SECTION -->
+						<label class="prototyper-ui-section-adminonly">
+							<?php
+							echo elgg_view('input/checkbox', array(
+								'name' => 'field[__ID__][admin_only]',
+								'value' => 1,
+								'checked' => $admin_only,
+							)) . elgg_echo('prototyper:ui:admin_only')
+							?>
+						</label>
+						<!-- END REQUIRED SECTION -->
+
 						<!-- START MULTIPLE SECTION -->
 						<label class="prototyper-ui-section-multiple">
 							<?php
@@ -152,45 +162,46 @@ $input_vars = $field->getInputVars();
 							?>
 						</label>
 						<!-- END ACCESS SECTION -->
+					</div>
 
-						<!-- START RELATIONSHIP SECTION -->
-						<div class="prototyper-ui-section-relationship">
-							<label>
-								<?php
-								echo elgg_view('input/checkbox', array(
-									'name' => 'field[__ID__][relationship][inverse]',
-									'value' => 1,
-									'checked' => $field->get('inverse_relationship'),
-								)) . elgg_echo('prototyper:ui:inverse_relationship')
-								?>
-							</label>
-							<label>
-								<?php
-								echo elgg_view('input/checkbox', array(
-									'name' => 'field[__ID__][relationship][bilateral]',
-									'value' => 1,
-									'checked' => $field->get('bilateral'),
-								)) . elgg_echo('prototyper:ui:bilateral')
-								?>
-							</label>
-						</div>
-						<!-- END RELATIONSHIP SECTION -->
+					<!-- START RELATIONSHIP SECTION -->
+					<div class="prototyper-ui-section-relationship">
+						<label>
+							<?php
+							echo elgg_view('input/checkbox', array(
+								'name' => 'field[__ID__][relationship][inverse]',
+								'value' => 1,
+								'checked' => $field->get('inverse_relationship'),
+							)) . elgg_echo('prototyper:ui:inverse_relationship')
+							?>
+						</label>
+						<label>
+							<?php
+							echo elgg_view('input/checkbox', array(
+								'name' => 'field[__ID__][relationship][bilateral]',
+								'value' => 1,
+								'checked' => $field->get('bilateral'),
+							)) . elgg_echo('prototyper:ui:bilateral')
+							?>
+						</label>
+					</div>
+					<!-- END RELATIONSHIP SECTION -->
 
-						<!-- START DEFAULT FLAGS SECTION -->
+					<!-- START DEFAULT FLAGS SECTION -->
 					<div class="prototyper-ui-section-value">
 						<label><?php echo elgg_echo('prototyper:ui:flags') ?></label>
 						<div class="prototyper-ui-properties">
 							<?php
+							$flags = $field->getFlags();
 							echo elgg_view('input/text', array(
 								'name' => 'field[__ID__][flags]',
-								'value' => elgg_extract('flags', $input_vars, ''),
+								'value' => is_array($flags) ? implode(', ', $flags) : $flags,
 							));
 							?>
 						</div>
 					</div>
 					<!-- END LABEL SECTION -->
 
-					</div>
 				</div>
 
 				<div class="prototyper-col-6">
@@ -202,7 +213,7 @@ $input_vars = $field->getInputVars();
 							<?php
 							echo elgg_view('input/text', array(
 								'name' => 'field[__ID__][value]',
-								'value' => elgg_extract('value', $input_vars, ''),
+								'value' => $field->getDefaultValue(),
 							));
 							?>
 						</div>
@@ -281,7 +292,7 @@ $input_vars = $field->getInputVars();
 							</div>
 							<div class="prototyper-ui-options-list">
 								<?php
-								$options_values = elgg_extract('options_values', $field->getInputVars(), array());
+								$options_values = elgg_extract('options_values', $field->getInputVars($entity), array());
 								if (!count($options_values)) {
 									$options_values = array('' => array($lang => ''));
 								}
@@ -332,10 +343,109 @@ $input_vars = $field->getInputVars();
 						</div>
 					</div>
 				</div>
-				<!-- END REQUIRED SECTION -->
+				<!-- END OPTIONS VALUES SECTION -->
+
+				<!-- START VALIDATION SECTION -->
+				<div class="prototyper-ui-section-validation">
+					<div class="prototyper-col-12">
+						<label><?php echo elgg_echo('prototyper:ui:validation') ?></label>
+						<div class="prototyper-ui-properties">
+							<div class="prototyper-row">
+								<div class="prototyper-col-2">
+									&nbsp;
+								</div>
+								<div class="prototyper-col-5">
+									<label><?php echo elgg_echo('prototyper:ui:validation:rule') ?></label>
+								</div>
+								<div class="prototyper-col-5">
+									<label><?php echo elgg_echo('prototyper:ui:validation:expectation') ?></label>
+								</div>
+							</div>
+							<div class="prototyper-ui-options-list">
+								<?php
+								$validation_rule_defs = hypePrototyper()->config->getValidationRules();
+								$validation_rule_defs_options = array('' => '');
+								foreach ($validation_rule_defs as $rule => $rule_opts) {
+									$validation_rule_defs_options[$rule] = elgg_echo("prototyper:ui:validation:rule:$rule");
+								}
+
+								$validation_rules = $field->getValidationRules();
+								if (empty($validation_rules)) {
+									$validation_rules = array('' => '');
+								}
+
+								foreach ($validation_rules as $rule => $expectation) {
+									?>
+									<div class="prototyper-row prototyper-ui-validation-item">
+										<div class="prototyper-col-2 no-padding">
+											<?php
+											echo elgg_view('output/url', array(
+												'class' => 'prototyper-ui-validation-move',
+												'text' => elgg_view_icon('prototyper-ui-move'),
+												'href' => '#'
+											));
+											echo elgg_view('output/url', array(
+												'class' => 'prototyper-ui-validation-add',
+												'text' => elgg_view_icon('prototyper-ui-add'),
+												'href' => '#'
+											));
+											echo elgg_view('output/url', array(
+												'class' => 'prototyper-ui-validation-remove',
+												'text' => elgg_view_icon('prototyper-ui-remove'),
+												'href' => '#'
+											));
+											?>
+										</div>
+										<div class="prototyper-col-5">
+											<?php
+											echo elgg_view('input/dropdown', array(
+												'name' => 'field[__ID__][validation][rule][]',
+												'value' => $rule,
+												'options_values' => $validation_rule_defs_options,
+												'class' => 'prototyper-ui-validation-type-select',
+											));
+											?>
+										</div>
+										<div class="prototyper-col-5">
+											<?php
+											foreach ($validation_rule_defs as $rule_def => $rule_def_opts) {
+												if (is_array($rule_def_opts)) {
+													$rule_def_opts_values = array('' => '');
+													foreach ($rule_def_opts as $ro) {
+														$rule_def_opts_values[$ro] = elgg_echo("prototyper:ui:validation:$rule_def:$ro");
+													}
+													echo elgg_view('input/dropdown', array(
+														'data-name' => "field[__ID__][validation][expectation][]",
+														'value' => $expectation,
+														'options_values' => $rule_def_opts_values,
+														'data-rule' => $rule_def,
+														'class' => 'prototyper-ui-validation-value-select hidden',
+													));
+												} else {
+													echo elgg_view('input/text', array(
+														'data-name' => "field[__ID__][validation][expectation][]",
+														'value' => $expectation,
+														'data-rule' => $rule_def,
+														'class' => 'prototyper-ui-validation-value-select hidden',
+													));
+												}
+											}
+											?>
+										</div>
+
+									</div>
+									<?php
+								}
+								?>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END VALIDATION SECTION -->
+
 				<?php
-					echo elgg_view("forms/prototyper/template/extend", $vars);
-					echo elgg_view("forms/prototyper/template/$data_type/$type", $vars);
+				echo elgg_view("forms/prototyper/template/extend", $vars);
+				echo elgg_view("forms/prototyper/template/$data_type/$type", $vars);
 				?>
 			</div>
 		</div>

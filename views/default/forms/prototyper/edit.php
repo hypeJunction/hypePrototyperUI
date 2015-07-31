@@ -1,11 +1,9 @@
 <?php
-
-namespace hypeJunction\Prototyper\UI;
-
-use hypeJunction\Prototyper\Field;
-use hypeJunction\Prototyper\Form;
-
-elgg_require_js('framework/prototyper_ui');
+if (\hypeJunction\Integration::isElggVersionBelow('1.9.0')) {
+	elgg_load_js('prototyper_ui');
+} else {
+	elgg_require_js('framework/prototyper_ui');
+}
 
 elgg_push_context('prototyper-ui');
 
@@ -13,10 +11,10 @@ $action = elgg_extract('action', $vars, '');
 $attributes = elgg_extract('attributes', $vars, array());
 $params = elgg_extract('params', $vars, array());
 
-$form = new Form($action, $attributes);
-$form->setParams($params);
-$fields = $form->getFields();
+$templates = hypePrototyper()->ui->getTemplates();
+$entity = hypePrototyper()->entityFactory->build($attributes);
 
+$fields = hypePrototyper()->prototype->fields($entity, $action, $params);
 ?>
 <div class="prototyper-ui-dashboard prototyper-row">
 	<div class="prototyper-col-3">
@@ -29,7 +27,6 @@ $fields = $form->getFields();
 		</div>
 		<div class="prototyper-ui-dashboard-source">
 			<?php
-			$templates = Template::getTemplates();
 			foreach ($templates as $dt => $dt_options) {
 				echo '<h3>' . elgg_echo("prototyper:ui:$dt") . '</h3>';
 				foreach ($dt_options as $it => $it_options) {
@@ -40,19 +37,24 @@ $fields = $form->getFields();
 							), elgg_echo("prototyper:ui:$it"));
 
 					$shortname = "prototyper_$dt_$it";
-					$field = $form->addField(array(
+					$field = hypePrototyper()->fieldFactory->build(array(
 						'shortname' => $shortname,
 						'type' => $it,
 						'data_type' => $dt,
 					));
-					if (!$field instanceof Field) {
+
+					if (!$field instanceof \hypeJunction\Prototyper\Elements\Field) {
 						continue;
 					}
 					echo elgg_format_element('div', array(
 						'class' => 'prototyper-ui-template',
 						'data-dt' => $dt,
 						'data-it' => $it,
-							), elgg_view('forms/prototyper/template', array('field' => $field)));
+							), elgg_view('forms/prototyper/template', array(
+						'field' => $field,
+						'entity' => $entity,
+							))
+					);
 				}
 			}
 			?>
@@ -62,9 +64,10 @@ $fields = $form->getFields();
 		<div class="prototyper-ui-dashboard-target">
 			<?php
 			foreach ($fields as $field) {
-				if (!$field instanceof Field) {
+				if (!$field instanceof \hypeJunction\Prototyper\Elements\Field) {
 					continue;
 				}
+
 				$dt = $field->getDataType();
 				$it = $field->getType();
 				if (!isset($templates[$dt][$it])) {
@@ -72,7 +75,10 @@ $fields = $form->getFields();
 				}
 				echo elgg_format_element('div', array(
 					'class' => 'prototyper-ui-field',
-						), elgg_view('forms/prototyper/template', array('field' => $field)));
+						), elgg_view('forms/prototyper/template', array(
+					'field' => $field,
+					'entity' => $entity,
+				)));
 			}
 			?>
 		</div>

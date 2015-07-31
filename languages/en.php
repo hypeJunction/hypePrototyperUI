@@ -9,6 +9,7 @@ $english = array(
 
 	'prototyper:ui:dit' => 'Type',
 	'prototyper:ui:required' => 'Required',
+	'prototyper:ui:admin_only' => 'Admin only field',
 	'prototyper:ui:multiple' => 'Allow multiple inputs',
 	'prototyper:ui:show_access' => 'Show access input',
 	'prototyper:ui:value' => 'Default Value',
@@ -26,6 +27,9 @@ $english = array(
 	'prototyper:ui:flags' => 'Flags (for back end filtering)',
 	'prototyper:ui:min' => 'Minimum value',
 	'prototyper:ui:max' => 'Maximum value',
+	'prototyper:ui:crop' => "Enable Cropping",
+	'prototyper:ui:crop_ratio_w' => 'Crop Ratio Width',
+	'prototyper:ui:crop_ratio_h' => 'Crop Ratio Height',
 	
 
 	'prototyper:ui:attributes' => 'Attributes',
@@ -33,6 +37,7 @@ $english = array(
 	'prototyper:ui:annotation' => 'Annotations',
 	'prototyper:ui:relationship' => 'Relationship',
 	'prototyper:ui:icon' => 'Icon',
+	'prototyper:ui:image' => 'Image',
 	'prototyper:ui:category' => 'Categories',
 
 	'prototyper:ui:attribute:title' => 'Title/Name',
@@ -54,6 +59,36 @@ $english = array(
 	'prototyper:ui:date' => 'Date Picker',
 	'prototyper:ui:email' => 'E-mail',
 	'prototyper:ui:url' => 'URL',
+	'prototyper:ui:access' => 'Access',
+	'prototyper:ui:time' => 'Time',
+
+	'prototyper:ui:validation' => 'Validation',
+	'prototyper:ui:validation:rule' => 'Rule',
+
+	'prototyper:ui:validation:rule:type' => 'Value Type',
+	'prototyper:ui:validation:type:integer' => 'Integer',
+	'prototyper:ui:validation:type:string' => 'Text/String',
+	'prototyper:ui:validation:type:alnum' => 'Alphanumeric',
+	'prototyper:ui:validation:type:alpha' => 'Alphabetic',
+	'prototyper:ui:validation:type:int' => 'Integer',
+	'prototyper:ui:validation:type:numeric' => 'Numeric',
+	'prototyper:ui:validation:type:date' => 'Date',
+	'prototyper:ui:validation:type:url' => 'URL',
+	'prototyper:ui:validation:type:email' => 'Email',
+	'prototyper:ui:validation:type:guid' => 'Existing entity GUID',
+	'prototyper:ui:validation:type:image' => 'Image File',
+
+	'prototyper:ui:validation:rule:min' => 'Minimum',
+	'prototyper:ui:validation:rule:max' => 'Maximum',
+	'prototyper:ui:validation:rule:minlength' => 'Minimum Length',
+	'prototyper:ui:validation:rule:maxlength' => 'Maximum Length',
+	'prototyper:ui:validation:rule:contains' => 'Contains',
+	'prototyper:ui:validation:rule:regex' => 'Regex',
+
+	'prototyper:ui:validation:expectation' => 'Expectation',
+	
+	'prototyper:ui:time:format' => 'Format',
+	'prototyper:ui:time:interval' => 'Interval between options in seconds',
 
 );
 

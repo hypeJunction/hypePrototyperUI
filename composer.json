@@ -17,16 +17,17 @@
 		"installer-name": "hypePrototyperUI"
 	},
 	"config": {
-		"vendor-dir": "vendors",
-		"preferred-install": "dist"
+		"vendor-dir": "/vendor/"
 	},
 	"require": {
-		"php": ">=5.3.3",
-		"composer/installers": ">=1.0.8"
+		"php": ">=5.4",
+		"composer/installers": "1.*",
+		"hypejunction/hypeapps": ">4.0",
+		"hypejunction/hypeprototyper": "*"
 	},
 	"autoload": {
-		"psr-4": {
-			"hypeJunction\\": "classes/hypeJunction/"
+		"psr-0": {
+			"": "classes/"
 		}
 	}
 }

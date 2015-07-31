@@ -1,8 +1,11 @@
 hypePrototyperUI
 ================
+![Elgg 1.8](https://img.shields.io/badge/Elgg-1.8.x-orange.svg?style=flat-square)
+![Elgg 1.9](https://img.shields.io/badge/Elgg-1.9.x-orange.svg?style=flat-square)
+![Elgg 1.10](https://img.shields.io/badge/Elgg-1.10.x-orange.svg?style=flat-square)
+![Elgg 1.11](https://img.shields.io/badge/Elgg-1.11.x-orange.svg?style=flat-square)
 
 User Interface for hypePrototyper
-
 
 ## Introduction
 
@@ -13,6 +16,10 @@ modifications over time.
 ![alt text](https://raw.github.com/hypeJunction/hypePrototyperUI/master/screenshots/prototyper-ui.png "User Interface")
 ![alt text](https://raw.github.com/hypeJunction/hypePrototyperUI/master/screenshots/prototyper-form.png "Resulting Form")
 
+
+## Requirements
+
+Even though this plugins runs on 1.8, your theme will need to support jQuery 1.7+.
 
 ## How to Use
 
@@ -59,7 +66,7 @@ use hypeJunction\Prototyper\UI\Template;
 $container_guid = get_input('container_guid');
 $library = get_entity($container_guid);
 
-$prototype = Template::getPrototype();
+$prototype = hypePrototyper()->ui->buildPrototypeFromInput();
 
 $library->book_prototype = json_encode($prototype);
 ```
@@ -92,20 +99,13 @@ $book = elgg_extract('entity', $vars);
 $library = elgg_extract('container', $vars);
 
 $attributes = array(
+	'guid' => $book->guid,
 	'type' => 'object',
 	'subtype' => 'book',
 	'container_guid' => $library->guid,
 );
 
-try {
-	$form = new Form('books/save', $attributes);
-	$form->setEntity($book);
-	$body = $form->viewBody();
-} catch (Exception $ex) {
-	echo $ex->getMessage();
-	return;
-}
-
+$body = hypePrototyper()->form->with($attributes, 'books/save')->viewBody();
 $body .= elgg_view('input/submit', array(
 	'value' => elgg_echo('save')
 ));
@@ -126,12 +126,12 @@ Now in your action file, all you need to do is use:
 $guid = get_input('guid');
 
 $attributes = array(
+	'guid' => $guid,
 	'type' => 'object',
 	'subtype' => 'book',
 	'container_guid' => get_input('container_guid'),
 );
 
-$action = new Action('books/save', $attributes);
-$action->handle();
+hypePrototyper()->action->with($attributes, 'books/save')->handle();
 
 ```
