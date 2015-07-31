@@ -5,6 +5,9 @@
  *
  * @author Ismayil Khayredinov <ismayil.khayredinov@gmail.com>
  */
+
+require_once dirname(dirname(dirname(__FILE__))) . '/vendor/autoload.php';
+
 elgg_register_event_handler('init', 'system', 'prototyper_ui_init');
 
 /**
