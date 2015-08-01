@@ -1,252 +1,59 @@
-@charset "UTF-8";
-.prototyper-ui-dashboard h3 {
-  font-size: 15px;
-  margin: 10px 0 5px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #dddddd;
-}
-.prototyper-ui-dashboard h4 {
-  font-size: 13px;
-  margin: 0;
-}
-.prototyper-ui-dashboard .prototyper-ui-attribute-toggle {
-  font-size: 13px;
-}
-.prototyper-ui-dashboard .prototyper-ui-attribute-toggle input[type="checkbox"] {
-  margin: 0;
-}
+.prototyper-ui-dashboard h3 { font-size: 15px; margin: 10px 0 5px; padding-bottom: 5px; border-bottom: 1px solid #c3c3c3; }
+.prototyper-ui-dashboard h4 { font-size: 13px; margin: 0; }
+.prototyper-ui-dashboard .prototyper-ui-attribute-toggle { font-size: 13px; }
+.prototyper-ui-dashboard .prototyper-ui-attribute-toggle input[type="checkbox"] { margin: 0; }
 
-.prototyper-ui-dashboard-target {
-  border: 1px dashed #dddddd;
-  padding: 4px;
-  margin: 10px 0 30px;
-  min-height: 400px;
-}
+.prototyper-ui-dashboard-target { border: 1px dashed #c3c3c3; padding: 4px; margin: 10px 0 30px; min-height: 400px; }
 
-.prototyper-ui-template, .prototyper-ui-field {
-  position: relative;
-  padding: 40px 5px 5px;
-  margin: 0 0 5px;
-  border: 1px solid #dddddd;
-}
-.prototyper-ui-template .prototyper-fieldset, .prototyper-ui-field .prototyper-fieldset {
-  padding: 20px;
-  position: relative;
-}
-.prototyper-ui-template .prototyper-fieldset:before, .prototyper-ui-field .prototyper-fieldset:before {
-  content: "";
-  background: rgba(221, 221, 221, 0.2);
-  top: 0;
-  left: 0;
-  position: absolute;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-}
+.prototyper-ui-template, .prototyper-ui-field { position: relative; padding: 40px 5px 5px; margin: 0 0 5px; border: 1px solid #c3c3c3; }
+.prototyper-ui-template .prototyper-fieldset, .prototyper-ui-field .prototyper-fieldset { padding: 20px; position: relative; }
+.prototyper-ui-template .prototyper-fieldset:before, .prototyper-ui-field .prototyper-fieldset:before { content: ""; background: rgba(195, 195, 195, 0.2); top: 0; left: 0; position: absolute; z-index: 10; width: 100%; height: 100%; }
 
-.prototyper-ui-template-form input[type="text"], .prototyper-ui-template-form select {
-  margin-bottom: 1px;
-  padding: 0 5px;
-  height: 24px;
-  line-height: 14px;
-  font-size: 12px;
-}
-.prototyper-ui-template-form input[type="checkbox"] {
-  line-height: 24px;
-  vertical-align: middle;
-  margin: 0;
-}
-.prototyper-ui-template-form label {
-  font-size: 12px;
-  line-height: 24px;
-  vertical-align: middle;
-}
-.prototyper-ui-template-form .prototyper-ui-template-type {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 4px 8px;
-  background: #dddddd;
-  cursor: move;
-}
-.prototyper-ui-template-form .prototyper-ui-template-controls {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  padding: 5px;
-}
-.prototyper-ui-template-form .prototyper-ui-template-controls a, .prototyper-ui-template-form .prototyper-ui-template-controls input {
-  margin: 3px;
-  display: inline-block;
-  vertical-align: middle;
-}
-.prototyper-ui-template-form .prototyper-ui-template-controls input {
-  font-size: 12px;
-  font-weight: bold;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  background: #f4f4f4;
-  border-bottom: 1px dashed #dddddd;
-  border: none;
-  width: 75% !important;
-  margin: 0;
-}
-.prototyper-ui-template-form .hidden {
-  display: none;
-}
+.prototyper-ui-template-form input[type="text"], .prototyper-ui-template-form select { margin-bottom: 1px; padding: 0 5px; height: 24px; line-height: 14px; font-size: 12px; }
+.prototyper-ui-template-form input[type="checkbox"] { line-height: 24px; vertical-align: middle; margin: 0; }
+.prototyper-ui-template-form label { font-size: 12px; line-height: 24px; vertical-align: middle; }
+.prototyper-ui-template-form .prototyper-ui-template-type { position: absolute; top: 0; left: 0; right: 0; padding: 4px 8px; background: #c3c3c3; cursor: move; }
+.prototyper-ui-template-form .prototyper-ui-template-controls { position: absolute; right: 0; top: 0; width: 100%; padding: 5px; }
+.prototyper-ui-template-form .prototyper-ui-template-controls a, .prototyper-ui-template-form .prototyper-ui-template-controls input { margin: 3px; display: inline-block; vertical-align: middle; }
+.prototyper-ui-template-form .prototyper-ui-template-controls input { font-size: 12px; font-weight: bold; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; background: #f4f4f4; border-bottom: 1px dashed #c3c3c3; border: none; width: 75% !important; margin: 0; }
+.prototyper-ui-template-form .hidden { display: none; }
 
-.prototyper-ui-template {
-  display: none;
-}
+.prototyper-ui-template { display: none; }
 
-.prototyper-ui-template-body {
-  display: none;
-}
-.prototyper-ui-template-body.elgg-state-expanded {
-  display: block;
-}
+.prototyper-ui-template-body { display: none; }
+.prototyper-ui-template-body.elgg-state-expanded { display: block; }
 
-.prototyper-ui-properties {
-  *zoom: 1;
-  padding-left: 7px;
-  border-left: 1px solid #dddddd;
-  margin: 3px 0 5px 0;
-}
-.prototyper-ui-properties:before, .prototyper-ui-properties:after {
-  content: " ";
-  display: table;
-}
-.prototyper-ui-properties:after {
-  clear: both;
-}
+.prototyper-ui-properties { *zoom: 1; padding-left: 7px; border-left: 1px solid #c3c3c3; margin: 3px 0 5px 0; }
+.prototyper-ui-properties:before, .prototyper-ui-properties:after { content: " "; display: table; }
+.prototyper-ui-properties:after { clear: both; }
 
-.prototyper-ui-add {
-  cursor: pointer;
-}
-.prototyper-ui-add:after {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding-left: 4px;
-  font-size: 10px;
-  content: "";
-}
+.prototyper-ui-add { cursor: pointer; }
+.prototyper-ui-add:after { display: inline-block; font-family: 'FontAwesome'; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; padding-left: 4px; font-size: 10px; content: "\f055"; }
 
-.elgg-icon.elgg-icon-prototyper-ui-move {
-  background: none;
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  cursor: move;
-}
-.elgg-icon.elgg-icon-prototyper-ui-move:after {
-  content: "";
-}
-.elgg-icon.elgg-icon-prototyper-ui-edit {
-  background: none;
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.elgg-icon.elgg-icon-prototyper-ui-edit:after {
-  content: "";
-}
-.elgg-icon.elgg-icon-prototyper-ui-clone {
-  background: none;
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.elgg-icon.elgg-icon-prototyper-ui-clone:after {
-  content: "";
-}
-.elgg-icon.elgg-icon-prototyper-ui-remove {
-  background: none;
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.elgg-icon.elgg-icon-prototyper-ui-remove:after {
-  content: "";
-}
-.elgg-icon.elgg-icon-prototyper-ui-add {
-  background: none;
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.elgg-icon.elgg-icon-prototyper-ui-add:after {
-  content: "";
-}
+.elgg-icon.elgg-icon-prototyper-ui-move { background: none; display: inline-block; font-family: 'FontAwesome'; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; cursor: move; }
+.elgg-icon.elgg-icon-prototyper-ui-move:after { content: "\f047"; }
+.elgg-icon.elgg-icon-prototyper-ui-edit { background: none; display: inline-block; font-family: 'FontAwesome'; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.elgg-icon.elgg-icon-prototyper-ui-edit:after { content: "\f013"; }
+.elgg-icon.elgg-icon-prototyper-ui-clone { background: none; display: inline-block; font-family: 'FontAwesome'; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.elgg-icon.elgg-icon-prototyper-ui-clone:after { content: "\f0c5"; }
+.elgg-icon.elgg-icon-prototyper-ui-remove { background: none; display: inline-block; font-family: 'FontAwesome'; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.elgg-icon.elgg-icon-prototyper-ui-remove:after { content: "\f00d"; }
+.elgg-icon.elgg-icon-prototyper-ui-add { background: none; display: inline-block; font-family: 'FontAwesome'; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.elgg-icon.elgg-icon-prototyper-ui-add:after { content: "\f055"; }
 
-.prototyper-ui-options[data-required="hidden"] .prototyper-ui-section-required {
-  display: none;
-  visibility: hidden;
-}
-.prototyper-ui-options[data-adminonly="hidden"] .prototyper-ui-section-adminonly {
-  display: none;
-  visibility: hidden;
-}
-.prototyper-ui-options[data-multiple="hidden"] .prototyper-ui-section-multiple {
-  display: none;
-  visibility: hidden;
-}
-.prototyper-ui-options[data-access="hidden"] .prototyper-ui-section-show-access {
-  display: none;
-  visibility: hidden;
-}
-.prototyper-ui-options[data-label="hidden"] .prototyper-ui-section-label {
-  display: none;
-  visibility: hidden;
-}
-.prototyper-ui-options[data-optionsvalues="hidden"] .prototyper-ui-section-optionsvalues {
-  display: none;
-  visibility: hidden;
-}
-.prototyper-ui-options[data-help="hidden"] .prototyper-ui-section-help {
-  display: none;
-  visibility: hidden;
-}
-.prototyper-ui-options[data-relationship="hidden"] .prototyper-ui-section-relationship {
-  display: none;
-  visibility: hidden;
-}
-.prototyper-ui-options[data-value="hidden"] .prototyper-ui-section-value {
-  display: none;
-  visibility: hidden;
-}
-.prototyper-ui-options[data-validation="hidden"] .prototyper-ui-section-validation {
-  display: none;
-  visibility: hidden;
-}
+.prototyper-ui-options[data-required="hidden"] .prototyper-ui-section-required { display: none; visibility: hidden; }
+.prototyper-ui-options[data-adminonly="hidden"] .prototyper-ui-section-adminonly { display: none; visibility: hidden; }
+.prototyper-ui-options[data-multiple="hidden"] .prototyper-ui-section-multiple { display: none; visibility: hidden; }
+.prototyper-ui-options[data-access="hidden"] .prototyper-ui-section-show-access { display: none; visibility: hidden; }
+.prototyper-ui-options[data-label="hidden"] .prototyper-ui-section-label { display: none; visibility: hidden; }
+.prototyper-ui-options[data-optionsvalues="hidden"] .prototyper-ui-section-optionsvalues { display: none; visibility: hidden; }
+.prototyper-ui-options[data-help="hidden"] .prototyper-ui-section-help { display: none; visibility: hidden; }
+.prototyper-ui-options[data-relationship="hidden"] .prototyper-ui-section-relationship { display: none; visibility: hidden; }
+.prototyper-ui-options[data-value="hidden"] .prototyper-ui-section-value { display: none; visibility: hidden; }
+.prototyper-ui-options[data-validation="hidden"] .prototyper-ui-section-validation { display: none; visibility: hidden; }
 
-.prototyper-ui-options-item .elgg-icon {
-  margin-left: 3px;
-}
+.prototyper-ui-options-item .elgg-icon { margin-left: 3px; }
+
+.prototyper-image-upload-cropper .elgg-text-help { display: none; margin: 0; }
+.prototyper-image-upload-cropper.prototyper-has-preview { padding: 15px; }
+.prototyper-image-upload-cropper.prototyper-has-preview .elgg-text-help { display: block; }

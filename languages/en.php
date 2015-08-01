@@ -27,10 +27,13 @@ $english = array(
 	'prototyper:ui:flags' => 'Flags (for back end filtering)',
 	'prototyper:ui:min' => 'Minimum value',
 	'prototyper:ui:max' => 'Maximum value',
-	'prototyper:ui:crop' => "Enable Cropping",
+
+	'prototyper:ui:cropper_instructions' => 'Select an area of your image to crop',
 	'prototyper:ui:crop_ratio_w' => 'Crop Ratio Width',
 	'prototyper:ui:crop_ratio_h' => 'Crop Ratio Height',
-	
+	'prototyper:ui:cropped_icon_large' => 'Large crop width',
+	'prototyper:ui:cropped_icon_medium' => 'Medium crop width',
+	'prototyper:ui:cropped_icon_small' => 'Small crop width',
 
 	'prototyper:ui:attributes' => 'Attributes',
 	'prototyper:ui:metadata' => 'Meta Fields',
@@ -61,6 +64,8 @@ $english = array(
 	'prototyper:ui:url' => 'URL',
 	'prototyper:ui:access' => 'Access',
 	'prototyper:ui:time' => 'Time',
+	'prototyper:ui:upload' => 'File Upload',
+	'prototyper:ui:image_upload' => 'Image Upload',
 
 	'prototyper:ui:validation' => 'Validation',
 	'prototyper:ui:validation:rule' => 'Rule',
@@ -84,11 +89,16 @@ $english = array(
 	'prototyper:ui:validation:rule:maxlength' => 'Maximum Length',
 	'prototyper:ui:validation:rule:contains' => 'Contains',
 	'prototyper:ui:validation:rule:regex' => 'Regex',
+	'prototyper:ui:validation:rule:img_min_width' => 'Min width',
+	'prototyper:ui:validation:rule:img_max_width' => 'Max width',
+	'prototyper:ui:validation:rule:img_min_height' => 'Min height',
+	'prototyper:ui:validation:rule:img_max_height' => 'Max height',
 
 	'prototyper:ui:validation:expectation' => 'Expectation',
 	
 	'prototyper:ui:time:format' => 'Format',
 	'prototyper:ui:time:interval' => 'Interval between options in seconds',
+
 
 );
 
