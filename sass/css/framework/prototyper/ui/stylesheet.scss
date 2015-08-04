@@ -1,0 +1,247 @@
+@import "compass/css3"; // compass css3 helpers
+@import "../../../../../../../sass/global/variables";
+@import "variables";
+
+.prototyper-ui-dashboard {
+	h3 {
+		font-size: 15px;
+		margin: 10px 0 5px;
+		padding-bottom: 5px;
+		border-bottom: 1px solid $border-color;
+	}
+	h4 {
+		font-size: 13px;
+		margin: 0;
+	}
+	.prototyper-ui-attribute-toggle {
+		font-size: 13px;
+		input[type="checkbox"] {
+			margin: 0;
+		}
+	}
+}
+.prototyper-ui-dashboard-target {
+	border: 1px dashed $border-color;
+	padding: 4px;
+	margin: 10px 0 30px;
+	min-height: 400px;
+}
+
+.prototyper-ui-template, .prototyper-ui-field {
+	position: relative;
+	padding: 40px 5px 5px;
+	margin: 0 0 5px;
+	border: 1px solid $border-color;
+	.prototyper-fieldset {
+		padding: 20px;
+		position: relative;
+		&:before {
+			content: "";
+			background: rgba($border-color, 0.2);
+			top: 0;
+			left: 0;
+			position: absolute;
+			z-index: 10;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+.prototyper-ui-template-form {
+	input[type="text"], select {
+		margin-bottom: 1px;
+		padding: 0 5px;
+		height: 24px;
+		line-height: 14px;
+		font-size: 12px;
+	}
+	input[type="checkbox"] {
+		line-height: 24px;
+		vertical-align: middle;
+		margin: 0;
+	}
+	label {
+		font-size: 12px;
+		line-height: 24px;
+		vertical-align: middle;
+	}
+	.prototyper-ui-template-type {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		padding: 4px 8px;
+		background: $border-color;
+		cursor: move;
+	}
+	.prototyper-ui-template-controls {
+		position: absolute;
+		right: 0;
+		top:0;
+		width: 100%;
+		padding: 5px;
+		a, input {
+			margin: 3px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		input {
+			font-size: 12px;
+			font-weight: bold;
+			@include box-shadow(none);
+			background: #f4f4f4;
+			border-bottom: 1px dashed $border-color;
+			border: none;
+			width: 75% !important;
+			margin: 0;
+		}
+	}
+	.hidden {
+		display: none;
+	}
+}
+.prototyper-ui-template {
+	display: none;
+}
+.prototyper-ui-template-body {
+	display: none;
+	&.elgg-state-expanded {
+		display: block;
+	}
+}
+.prototyper-ui-properties {
+	@include clearfix;
+	padding-left: 7px;
+	border-left: 1px solid $border-color;
+	margin: 3px 0 5px 0;
+}
+.prototyper-ui-add {
+	cursor: pointer;
+	&:after {
+		@include icon;
+		padding-left: 4px;
+		font-size: 10px;
+		content: $fa-var-plus-circle;
+	}
+}
+
+.elgg-icon {
+	&.elgg-icon-prototyper-ui-move {
+		background: none;
+		@include icon;
+		cursor: move;
+		&:after {
+			content: $fa-var-arrows;
+		}
+	}
+	&.elgg-icon-prototyper-ui-edit {
+		background: none;
+		@include icon;
+		&:after {
+			content: $fa-var-cog;
+		}
+	}
+	&.elgg-icon-prototyper-ui-clone {
+		background: none;
+		@include icon;
+		&:after {
+			content: $fa-var-copy;
+		}
+	}
+	&.elgg-icon-prototyper-ui-remove {
+		background: none;
+		@include icon;
+		&:after {
+			content: $fa-var-times;
+		}
+	}
+	&.elgg-icon-prototyper-ui-add {
+		background: none;
+		@include icon;
+		&:after {
+			content: $fa-var-plus-circle;
+		}
+	}
+}
+
+.prototyper-ui-options {
+	&[data-required="hidden"] {
+		.prototyper-ui-section-required {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	&[data-adminonly="hidden"] {
+		.prototyper-ui-section-adminonly {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	&[data-multiple="hidden"] {
+		.prototyper-ui-section-multiple {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	&[data-access="hidden"] {
+		.prototyper-ui-section-show-access {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	&[data-label="hidden"] {
+		.prototyper-ui-section-label {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	&[data-optionsvalues="hidden"] {
+		.prototyper-ui-section-optionsvalues {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	&[data-help="hidden"] {
+		.prototyper-ui-section-help {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	&[data-relationship="hidden"] {
+		.prototyper-ui-section-relationship {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	&[data-value="hidden"] {
+		.prototyper-ui-section-value {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	&[data-validation="hidden"] {
+		.prototyper-ui-section-validation {
+			display: none;
+			visibility: hidden;
+		}
+	}
+}
+
+.prototyper-ui-options-item {
+	.elgg-icon {
+		margin-left: 3px;
+	}
+}
+
+.prototyper-image-upload-cropper {
+	.elgg-text-help {
+		display: none;
+		margin: 0;
+	}
+	&.prototyper-has-preview {
+		padding: 15px;
+		.elgg-text-help {
+			display: block;
+		}
+	}
+}
