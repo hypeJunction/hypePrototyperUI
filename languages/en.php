@@ -29,11 +29,11 @@ $english = array(
 	'prototyper:ui:max' => 'Maximum value',
 
 	'prototyper:ui:cropper_instructions' => 'Select an area of your image to crop',
-	'prototyper:ui:crop_ratio_w' => 'Crop Ratio Width',
-	'prototyper:ui:crop_ratio_h' => 'Crop Ratio Height',
-	'prototyper:ui:cropped_icon_large' => 'Large crop width',
-	'prototyper:ui:cropped_icon_medium' => 'Medium crop width',
-	'prototyper:ui:cropped_icon_small' => 'Small crop width',
+	'prototyper:ui:icon_sizes' => 'Icon cropping sizes',
+	'prototyper:ui:icon_sizes:help' => 'Specify additional cropping sizes required. The following aliases are reserved by the system: %s',
+	'prototyper:ui:icon_sizes:name' => 'Alias',
+	'prototyper:ui:icon_sizes:w' => 'Width',
+	'prototyper:ui:icon_sizes:h' => 'Height',
 
 	'prototyper:ui:attributes' => 'Attributes',
 	'prototyper:ui:metadata' => 'Meta Fields',
