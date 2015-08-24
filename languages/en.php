@@ -36,7 +36,7 @@ $english = array(
 	'prototyper:ui:icon_sizes:w' => 'Width',
 	'prototyper:ui:icon_sizes:h' => 'Height',
 
-	'prototyper:ui:attributes' => 'Attributes',
+	'prototyper:ui:attribute' => 'Attributes',
 	'prototyper:ui:metadata' => 'Meta Fields',
 	'prototyper:ui:annotation' => 'Annotations',
 	'prototyper:ui:relationship' => 'Relationship',
@@ -44,9 +44,10 @@ $english = array(
 	'prototyper:ui:image' => 'Image',
 	'prototyper:ui:category' => 'Categories',
 
-	'prototyper:ui:attribute:title' => 'Title/Name',
-	'prototyper:ui:attribute:description' => 'Description',
-	'prototyper:ui:attribute:access_id' => 'Access',
+	'prototyper:ui:title' => 'Title',
+	'prototyper:ui:name' => 'Name',
+	'prototyper:ui:description' => 'Description',
+	'prototyper:ui:access_id' => 'Access',
 
 	'prototyper:ui:hidden' => 'Hidden',
 	'prototyper:ui:text' => 'Short Text',
@@ -105,6 +106,9 @@ $english = array(
 	'admin:prototyper:form' => 'Demo Form',
 	'admin:prototyper:profile' => 'Demo Profile',
 
+	'prototyper:ui:attributes:help' => 'To follow Elgg\'s data model, use "title" (for objects) or "name" (for users and groups), "description", and "access_id" fields in your form',
+	'prototyper:ui:shortname:placeholder' => 'Enter unqiue field name',
+	
 );
 
 add_translation('en', $english);

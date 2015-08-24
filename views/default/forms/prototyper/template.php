@@ -61,7 +61,8 @@ $input_vars = $field->getInputVars($entity);
 					echo elgg_view('input/text', array(
 						'class' => 'prototyper-ui-template-shortname',
 						'name' => 'field[__ID__][shortname]',
-						'value' => $shortname,
+						'value' => (strpos($shortname, 'prototyper_') === false) ? $shortname : '',
+						'placeholder' => elgg_echo('prototyper:ui:shortname:placeholder'),						
 					));
 					?>
 				</div>

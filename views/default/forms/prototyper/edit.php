@@ -15,16 +15,10 @@ $templates = hypePrototyper()->ui->getTemplates();
 $entity = hypePrototyper()->entityFactory->build($attributes);
 
 $fields = hypePrototyper()->prototype->fields($entity, $action, $params);
+
 ?>
 <div class="prototyper-ui-dashboard prototyper-row">
 	<div class="prototyper-col-3">
-		<div class="prototyper-ui-attribute-fields">
-			<?php
-			echo elgg_view('forms/prototyper/attributes', array(
-				'fields' => $fields
-			));
-			?>
-		</div>
 		<div class="prototyper-ui-dashboard-source">
 			<?php
 			foreach ($templates as $dt => $dt_options) {
@@ -36,12 +30,10 @@ $fields = hypePrototyper()->prototype->fields($entity, $action, $params);
 						'data-it' => $it,
 							), elgg_echo("prototyper:ui:$it"));
 
-					$shortname = "prototyper_$dt_$it";
-					$field = hypePrototyper()->fieldFactory->build(array(
-						'shortname' => $shortname,
-						'type' => $it,
-						'data_type' => $dt,
-					));
+					if (empty($it_options['shortname'])) {
+						$it_options['shortname'] = "prototyper_$dt_$it";
+					}
+					$field = hypePrototyper()->fieldFactory->build($it_options);
 
 					if (!$field instanceof \hypeJunction\Prototyper\Elements\Field) {
 						continue;
