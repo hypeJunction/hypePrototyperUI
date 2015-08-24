@@ -1,9 +1,6 @@
 <?php
 
-use Exception;
 use hypeJunction\Prototyper\ValidationException;
-use IOException;
-use Sahipleri\Domains\DomainHandler;
 
 $guid = get_input('guid');
 
