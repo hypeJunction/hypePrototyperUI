@@ -21,6 +21,7 @@
 	<requires>
 		<type>plugin</type>
 		<name>hypePrototyper</name>
+		<version>4.3.0</version>
 	</requires>
 
 </plugin_manifest>

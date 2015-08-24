@@ -17,9 +17,9 @@
 		"installer-name": "hypePrototyperUI"
 	},
 	"require-dev": {
-		"composer/installers": "1.*",
-		"hypejunction/hypeapps": ">4.0",
-		"hypejunction/hypeprototyper": "*"
+		"composer/installers": "~1.0",
+		"hypejunction/hypeapps": "~4.0",
+		"hypejunction/hypeprototyper": "~4.3"
 	},
 	"autoload": {
 		"psr-0": {
