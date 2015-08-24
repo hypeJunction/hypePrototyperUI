@@ -100,6 +100,10 @@ $english = array(
 	'prototyper:ui:time:format' => 'Format',
 	'prototyper:ui:time:interval' => 'Interval between options in seconds',
 
+	'admin:prototyper' => 'Prototyper',
+	'admin:prototyper:prototype' => 'Demo Prototyper',
+	'admin:prototyper:form' => 'Demo Form',
+	'admin:prototyper:profile' => 'Demo Profile',
 
 );
 
