@@ -37,6 +37,7 @@ $value_type = $field->getValueType();
 
 $required = $field->isRequired();
 $admin_only = $field->isAdminOnly();
+$hidden_on_profile = $field->isHiddenOnProfile();
 $show_access = $field->hasAccessInput();
 $multiple = $field->isMultiple();
 
@@ -127,7 +128,7 @@ $input_vars = $field->getInputVars($entity);
 						</label>
 						<!-- END REQUIRED SECTION -->
 
-							<!-- START ADMIN ONLY SECTION -->
+						<!-- START ADMIN ONLY SECTION -->
 						<label class="prototyper-ui-section-adminonly">
 							<?php
 							echo elgg_view('input/checkbox', array(
@@ -137,7 +138,19 @@ $input_vars = $field->getInputVars($entity);
 							)) . elgg_echo('prototyper:ui:admin_only')
 							?>
 						</label>
-						<!-- END REQUIRED SECTION -->
+						<!-- END ADMIN ONLY SECTION -->
+
+						<!-- START HIDDEN FROM PROFILE SECTION -->
+						<label class="prototyper-ui-section-adminonly">
+							<?php
+							echo elgg_view('input/checkbox', array(
+								'name' => 'field[__ID__][hidden_on_profile]',
+								'value' => 1,
+								'checked' => $hidden_on_profile,
+							)) . elgg_echo('prototyper:ui:hidden_on_profile')
+							?>
+						</label>
+						<!-- END HIDDEN FROM PROFILE SECTION -->
 
 						<!-- START MULTIPLE SECTION -->
 						<label class="prototyper-ui-section-multiple">

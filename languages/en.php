@@ -10,6 +10,7 @@ $english = array(
 	'prototyper:ui:dit' => 'Type',
 	'prototyper:ui:required' => 'Required',
 	'prototyper:ui:admin_only' => 'Admin only field',
+	'prototyper:ui:hidden_on_profile' => 'Hidden on profile',
 	'prototyper:ui:multiple' => 'Allow multiple inputs',
 	'prototyper:ui:show_access' => 'Show access input',
 	'prototyper:ui:value' => 'Default Value',
