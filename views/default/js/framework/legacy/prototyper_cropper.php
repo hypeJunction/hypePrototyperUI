@@ -24,6 +24,7 @@
 						var $cropper = $(this);
 						var ratio = $cropper.data('ratio');
 
+						$('img', $cropper).cropper('destroy');
 						$('img', $cropper).remove();
 						$cropper.removeClass('prototyper-has-preview');
 						
