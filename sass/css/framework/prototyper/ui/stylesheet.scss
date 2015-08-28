@@ -232,16 +232,3 @@
 		margin-left: 3px;
 	}
 }
-
-.prototyper-image-upload-cropper {
-	.elgg-text-help {
-		display: none;
-		margin: 0;
-	}
-	&.prototyper-has-preview {
-		padding: 15px;
-		.elgg-text-help {
-			display: block;
-		}
-	}
-}

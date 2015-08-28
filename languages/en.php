@@ -29,7 +29,6 @@ $english = array(
 	'prototyper:ui:min' => 'Minimum value',
 	'prototyper:ui:max' => 'Maximum value',
 
-	'prototyper:ui:cropper_instructions' => 'Select an area of your image to crop',
 	'prototyper:ui:icon_sizes' => 'Icon cropping sizes',
 	'prototyper:ui:icon_sizes:help' => 'Specify additional cropping sizes required. The following aliases are reserved by the system: %s',
 	'prototyper:ui:icon_sizes:name' => 'Alias',
