@@ -16,7 +16,7 @@ $input_vars = $field->getInputVars($entity);
 
 $icon_sizes = (array) elgg_extract('icon_sizes', $input_vars, array());
 if (empty($icon_sizes)) {
-	$icon_sizes = hypeApps()->iconFactory->getSizes($entity);
+	$icon_sizes = hypeApps()->iconFactory->getSizes(new ElggFile());
 	foreach ($icon_sizes as $size => $options) {
 		$options['name'] = $size;
 		$icon_sizes[$size] = $options;
