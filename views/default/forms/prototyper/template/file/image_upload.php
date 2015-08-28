@@ -14,7 +14,15 @@ if (!$field instanceof Field) {
 $entity = elgg_extract('entity', $vars);
 $input_vars = $field->getInputVars($entity);
 
-$icon_sizes = (array) elgg_extract('data-icon-sizes', $input_vars, array());
+$icon_sizes = (array) elgg_extract('icon_sizes', $input_vars, array());
+if (empty($icon_sizes)) {
+	$icon_sizes = hypeApps()->iconFactory->getSizes($entity);
+	foreach ($icon_sizes as $size => $options) {
+		$options['name'] = $size;
+		$icon_sizes[$size] = $options;
+	}
+}
+
 $icon_sizes[] = array(); // add an empty form
 $system_icon_sizes = array_keys((array) elgg_get_config('icon_sizes'));
 
@@ -52,7 +60,7 @@ $system_icon_sizes = array_keys((array) elgg_get_config('icon_sizes'));
 					<div class="prototyper-col-4">
 						<?php
 						echo elgg_view('input/text', array(
-							'name' => 'field[__ID__][data-icon-sizes][name][]',
+							'name' => 'field[__ID__][icon_sizes][name][]',
 							'value' => elgg_extract('name', $icon_size, ''),
 						));
 						?>
@@ -60,7 +68,7 @@ $system_icon_sizes = array_keys((array) elgg_get_config('icon_sizes'));
 					<div class="prototyper-col-3">
 						<?php
 						echo elgg_view('input/text', array(
-							'name' => "field[__ID__][data-icon-sizes][w][]",
+							'name' => "field[__ID__][icon_sizes][w][]",
 							'value' => elgg_extract('w', $icon_size, ''),
 						));
 						?>
@@ -68,7 +76,7 @@ $system_icon_sizes = array_keys((array) elgg_get_config('icon_sizes'));
 					<div class="prototyper-col-3">
 						<?php
 						echo elgg_view('input/text', array(
-							'name' => "field[__ID__][data-icon-sizes][h][]",
+							'name' => "field[__ID__][icon_sizes][h][]",
 							'value' => elgg_extract('h', $icon_size, ''),
 						));
 						?>
