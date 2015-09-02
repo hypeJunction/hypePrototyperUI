@@ -5,8 +5,6 @@ namespace hypeJunction\Prototyper\UI;
 $english = array(
 
 	'prototyper:ui:metadata:shortname' => 'Metadata Name',
-	'prototyper:ui:annotation:shortname' => 'Annotation Name',
-
 	'prototyper:ui:dit' => 'Type',
 	'prototyper:ui:required' => 'Required',
 	'prototyper:ui:admin_only' => 'Admin only field',
@@ -36,8 +34,7 @@ $english = array(
 
 	'prototyper:ui:attribute' => 'Attributes',
 	'prototyper:ui:metadata' => 'Meta Fields',
-	'prototyper:ui:annotation' => 'Annotations',
-	'prototyper:ui:relationship' => 'Relationship',
+	'prototyper:ui:relationship' => 'Relationships',
 	'prototyper:ui:icon' => 'Icon',
 	'prototyper:ui:image' => 'Image',
 	'prototyper:ui:category' => 'Categories',
