@@ -183,12 +183,6 @@
 			visibility: hidden;
 		}
 	}
-	&[data-access="hidden"] {
-		.prototyper-ui-section-show-access {
-			display: none;
-			visibility: hidden;
-		}
-	}
 	&[data-label="hidden"] {
 		.prototyper-ui-section-label {
 			display: none;

@@ -38,7 +38,6 @@ $value_type = $field->getValueType();
 $required = $field->isRequired();
 $admin_only = $field->isAdminOnly();
 $hide_on_profile = $field->isHiddenOnProfile();
-$show_access = $field->hasAccessInput();
 $multiple = $field->isMultiple();
 
 $label = $field->getLabel();
@@ -165,17 +164,6 @@ $input_vars = $field->getInputVars($entity);
 						</label>
 						<!-- END MULTIPLE SECTION -->
 
-						<!-- START ACCESS SECTION -->
-						<label class="prototyper-ui-section-show-access">
-							<?php
-							echo elgg_view('input/checkbox', array(
-								'name' => 'field[__ID__][show_access]',
-								'value' => 1,
-								'checked' => $show_access,
-							)) . elgg_echo('prototyper:ui:show_access')
-							?>
-						</label>
-						<!-- END ACCESS SECTION -->
 					</div>
 
 					<!-- START RELATIONSHIP SECTION -->

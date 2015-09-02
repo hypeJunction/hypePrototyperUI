@@ -12,7 +12,6 @@ $english = array(
 	'prototyper:ui:admin_only' => 'Admin only field',
 	'prototyper:ui:hide_on_profile' => 'Hidden on profile',
 	'prototyper:ui:multiple' => 'Allow multiple inputs',
-	'prototyper:ui:show_access' => 'Show access input',
 	'prototyper:ui:value' => 'Default Value',
 	'prototyper:ui:label' => 'Label (%s)',
 	'prototyper:ui:hide_label' => 'Hide label',
